@@ -14,7 +14,7 @@ resource "azurerm_dev_center_project_environment_type" "dev_center_project_envir
   }
 
   dynamic "user_role_assignment" {
-    for_each = each.value.user_role_assignment != null ? [each.value.user_role_assignment] : []
+    for_each = each.value.user_role_assignment != null ? each.value.user_role_assignment : []
     content {
       roles   = user_role_assignment.value.roles
       user_id = user_role_assignment.value.user_id
