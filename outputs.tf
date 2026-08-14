@@ -16,7 +16,7 @@ output "dev_center_project_environment_types_dev_center_project_id" {
 }
 output "dev_center_project_environment_types_identity" {
   description = "Map of identity values across all dev_center_project_environment_types, keyed the same as var.dev_center_project_environment_types"
-  value       = { for k, v in azurerm_dev_center_project_environment_type.dev_center_project_environment_types : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_dev_center_project_environment_type.dev_center_project_environment_types : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "dev_center_project_environment_types_location" {
   description = "Map of location values across all dev_center_project_environment_types, keyed the same as var.dev_center_project_environment_types"
